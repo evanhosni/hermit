@@ -11,7 +11,13 @@ const main = () => {
     i++;
     setTimeout(main, speed_txt);
   } else {
-    setTimeout(window.close, speed_close);
+    setTimeout(() => {
+      window.opener = null;
+      window.open("", "_self");
+      window.close();
+      window.history.go(-1);
+      $(document.body).hide();
+    }, speed_close);
   }
 };
 
